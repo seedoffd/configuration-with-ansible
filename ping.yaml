@@ -5,6 +5,6 @@
   become_method: sudo
   connection: ssh
   ignore_errors: false
-  task:
-    - name: Task Name Here
-      ping: 
+  tasks:
+  - name: Task Name Here
+    ping:
