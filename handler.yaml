@@ -1,0 +1,32 @@
+---
+- name: Handler
+  hosts: all
+  become: true
+  become_method: sudo
+  connection: ssh
+  ignore_errors: false
+  tasks:
+    - name: Handler tasks
+      package:
+        name: httpd
+        state: latest
+      notify: HTTPD RESTART
+
+    - name: Install mysql
+      package:
+        name: mariadb-server
+        state: present
+      notify: MYSQL RESTART
+
+
+
+  handlers:
+     - name: Restart Apache
+       systemd:
+         name: httpd
+         state: restarted
+
+     - name: Restart mysql
+       systemd:
+          name: msql
+          state: restarted

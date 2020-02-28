@@ -17,7 +17,7 @@
       state: latest
     
   - name: Power off iptables
-    systemd: 
+    systemd:  
       name: firewalld
       state: stopped
       ignore_errors: true
